@@ -48,8 +48,8 @@ public enum SpanAdapter {
     }
     protoSpan.name = spanData.name
     protoSpan.kind = toProtoSpanKind(kind: spanData.kind)
-    protoSpan.startTimeUnixNano = spanData.startTime.timeIntervalSince1970.toNanoseconds
-    protoSpan.endTimeUnixNano = spanData.endTime.timeIntervalSince1970.toNanoseconds
+    protoSpan.startTimeUnixNano = UInt64(spanData.startTime.timeIntervalSince1970.toNanoseconds)
+    protoSpan.endTimeUnixNano = UInt64(spanData.endTime.timeIntervalSince1970.toNanoseconds)
     spanData.attributes.forEach {
       protoSpan.attributes.append(CommonAdapter.toProtoAttribute(key: $0.key, attributeValue: $0.value))
     }
